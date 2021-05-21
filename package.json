@@ -1,0 +1,24 @@
+{
+  "name": "cryptowatchh",
+  "version": "1.0.0",
+  "description": "A CLI Tool to get latest cryptocurrency prices",
+  "main": "src/cli.js",
+  "preferGlobal": true,
+  "bin": "src/cli.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cli",
+    "crypto",
+    "cryptowatchh"
+  ],
+  "author": "Abhishek Mogaveera",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "chalk": "^4.1.1",
+    "cli-table": "^0.3.6",
+    "commander": "^7.2.0"
+  }
+}
