@@ -1,6 +1,6 @@
 {
   "name": "cryptowatchh",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A CLI Tool to get latest cryptocurrency prices",
   "main": "src/cli.js",
   "preferGlobal": true,

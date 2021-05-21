@@ -44,7 +44,7 @@ const convertNum = (labelValue) => {
   };
 
 program
-  .version("1.0.0")
+  .version("1.0.1")
   .description("A CLI Tool to get latest cryptocurrency prices");
 
   program
@@ -73,15 +73,17 @@ program
   .action((name) => {
     axios("https://api.coinlore.net/api/tickers/")
       .then(res=>{
-          const el = res?.data?.data.find(el=>el?.name.toLowerCase().includes(name))
-          table.push([el?.rank,el?.symbol,
-            el?.name,el?.price_usd,
-            convertNum(el?.volume24),
-            convertNum(el?.market_cap_usd),
-            el?.percent_change_1h>0?chalk.green(el?.percent_change_1h):chalk.red(el?.percent_change_1h),
-            el?.percent_change_24h>0?chalk.green(el?.percent_change_24h):chalk.red(el?.percent_change_24h),
-            el?.percent_change_7d>0?chalk.green(el?.percent_change_7d):chalk.red(el?.percent_change_7d)
-        ])
+          const ele = res?.data?.data.filter(el=>el?.name.toLowerCase().includes(name.toLowerCase()))
+          ele?.map(el=>{
+            table.push([el?.rank,el?.symbol,
+              el?.name,el?.price_usd,
+              convertNum(el?.volume24),
+              convertNum(el?.market_cap_usd),
+              el?.percent_change_1h>0?chalk.green(el?.percent_change_1h):chalk.red(el?.percent_change_1h),
+              el?.percent_change_24h>0?chalk.green(el?.percent_change_24h):chalk.red(el?.percent_change_24h),
+              el?.percent_change_7d>0?chalk.green(el?.percent_change_7d):chalk.red(el?.percent_change_7d)
+          ])
+          })
           console.log(table.toString());
       })
       .catch(err=>console.log(chalk.red(`Something went wrong !`)))
